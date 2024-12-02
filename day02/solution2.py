@@ -1,8 +1,6 @@
 def checkConditions(line):
-  ascending = all(line[i] <= line[i+1] for i in range(len(line)-1))
-  descending = all(line[i] >= line[i+1] for i in range(len(line)-1))
   diff = all(1 <= abs(line[i] - line[i+1]) <= 3 for i in range(len(line)-1))
-  return (ascending or descending) and diff
+  return (line == sorted(line) or line == sorted(line, reverse=True)) and diff
 
 def checkWithRemoval(line):
   if checkConditions(line):
